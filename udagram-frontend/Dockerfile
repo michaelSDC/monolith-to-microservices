@@ -1,17 +1,11 @@
 ### Build
-FROM --platform=linux/amd64 beevelop/ionic:v2023.10.1 AS ionic
-#FROM --platform=linux/amd64 beevelop/ionic:latest AS ionic
-
+FROM --platform=linux/amd64 beevelop/ionic:v2021.06.1 AS ionic
 ## Create app directory
 WORKDIR /usr/src/app
 ## Install app dependencies
 ## A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
-RUN npm ci
-
-#RUN npm install -g @ionic/cli
-#RUN npm install -f
-
+RUN npm ci --no-optional
 ## Bundle app source
 COPY . .
 RUN ionic build
