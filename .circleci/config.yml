@@ -13,4 +13,8 @@ jobs:
           path: ~/project
       - node/install-packages:
           pkg-manager: npm
-
+  
+workflows:
+  build-and-test:
+    jobs:
+      - test-node
