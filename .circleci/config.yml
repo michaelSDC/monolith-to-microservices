@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build:
+    # Use `docker:stable` as the Docker container to run this job in
+    docker:
+      - image: circleci/node14
+
+    steps:
+      # Checkout the repository files
+      - checkout
+
+      # Build the hello world image
+      - run: npm install
+      - run: npm test
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
