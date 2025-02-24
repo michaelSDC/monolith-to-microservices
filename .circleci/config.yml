@@ -5,6 +5,9 @@ jobs:
     # Use `docker:stable` as the Docker container to run this job in
     docker:
       - image: circleci/node14
+        auth:
+          username: udacityclouddeveloper
+          password: ciqhyx-0cuppA-huzciz
 
     steps:
       # Checkout the repository files
