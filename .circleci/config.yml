@@ -1,9 +1,16 @@
+# This config was automatically generated from your source code
+# Stacks detected: deps:node:udagram-frontend
 version: 2.1
+orbs:
+  node: circleci/node@5
 jobs:
-  build_test:
-    docker:
-      - image: circleci/node14
+  test-node:
+    # Install node dependencies and run tests
+    executor: node/default
+    working_directory: ~/project/udagram-frontend
     steps:
-      - checkout
-      - run: docker-compose -f docker-compose-build.yaml build --parallel
-      - run: docker-compose up
+      - checkout:
+          path: ~/project
+      - node/install-packages:
+          pkg-manager: npm
+
