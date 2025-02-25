@@ -11,7 +11,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-            docker build -t udacityclouddeveloper/udagram-api-feed:latest 
+            docker build -t udacityclouddeveloper/udagram-api-feed:latest .
   
 workflows:
   build-and-test:
