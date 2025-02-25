@@ -1,9 +1,9 @@
 version: 2.1
 jobs:
   build-api-feed:
+    working_directory: ~/project/udagram-api-feed
     docker:
       - image: cimg/base:2022.09
-    working_directory: ~/project/udagram-api-feed
     steps:
       - checkout
       - run:
