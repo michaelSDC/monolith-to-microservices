@@ -1,19 +1,17 @@
 version: 2.1
 jobs:
-  build-api-feed:
-    working_directory: ~/project/udagram-api-feed
+  build-frontend:
     docker:
-      - image: cimg/base:stable
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+      - image: circleci/node:14
     steps:
       - checkout
-      - setup_remote_docker
       - run:
-          docker build -t udacityclouddeveloper/udagram-api-feed:latest .
-  
+        name: "Build frontend"
+        command: |
+          cd udagram-frontend
+          npm install
+          npm run build
 workflows:
   build-and-test:
     jobs:
-      - build-api-feed
+      - build-frontend
