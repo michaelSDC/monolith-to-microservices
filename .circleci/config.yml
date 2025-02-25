@@ -5,9 +5,9 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
-      - cd udagram-frontend
-      - run npm install
-      - run npm run build
+      - commmand: cd udagram-frontend
+      - run: npm install
+      - run: npm run build
 workflows:
   build-and-test:
     jobs:
