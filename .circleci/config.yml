@@ -1,14 +1,16 @@
 version: 2.1
 jobs:
-  build-frontend:
+  build-api-feed:
     docker:
       - image: circleci/node:14
     steps:
       - checkout
-      - cd udagram-frontend
-      - run: npm install
-      - run: npm run build
+      - run:
+        command: |
+        cd udagram-api-feed
+        npm install
+        npm run build
 workflows:
   build-and-test:
     jobs:
-      - build-frontend
+      - build-api-feed
