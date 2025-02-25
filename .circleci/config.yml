@@ -1,9 +1,11 @@
 version: 2.1
+
 jobs:
   build-api-feed:
-    working_directory: ~/project/udagram-api-feed
-    docker:
+    executors:
+      docker:
       - image: cimg/base:stable
+    working_directory: ~/project/udagram-api-feed
     steps:
       - checkout
       - setup_remote_docker
