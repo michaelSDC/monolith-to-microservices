@@ -23,7 +23,8 @@ jobs:
 
       - name: Log in to Docker Hub
         run: |
-            docker login docker.io -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+            docker login -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+
 
   
 
