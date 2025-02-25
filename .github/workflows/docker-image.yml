@@ -20,15 +20,13 @@ jobs:
           docker build .
           docker tag udagram-api-feed udacityclouddeveloper/udagram-api-feed
 
+    - uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
     - name: Log in to Docker Hub
-      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
       with:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
 
-    - name: Push the Docker image
-      run: |
-        docker push ${{ secrets.USERNAME }}/udagram-api-feed
+
 
 
 
