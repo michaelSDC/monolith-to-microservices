@@ -40,6 +40,4 @@ workflows:
   build-and-test:
     jobs:
       - test-api-feed
-      - build-api-feed:
-        requires:
-            - test-api-feed
+      - build-api-feed
