@@ -19,5 +19,5 @@ jobs:
       #run: docker-compose -f docker-compose-build.yaml build --parallel
 
       run: |
-          cd /udagram-api-feed
+          cd udagram-api-feed
           docker build .
