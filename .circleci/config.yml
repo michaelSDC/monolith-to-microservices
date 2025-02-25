@@ -23,10 +23,14 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm run build
+          command: npm install .
+      - run:
+          command: npm run dev
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
           command: mkdir -p ~/artifacts
+
+          
       # Copy output to artifacts dir
       - run:
           name: Copy artifacts
