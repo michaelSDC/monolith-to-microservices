@@ -13,15 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Build the Docker image
     - uses: actions/checkout@v4
+    - name: Build the Docker image
       run: |
           cd udagram-api-feed
           docker build .
           docker tag udagram-api-feed udacityclouddeveloper/udagram-api-feed
 
-    - name: Log in to Docker Hub
     - uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+    - name: Log in to Docker Hub
+
       with:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
