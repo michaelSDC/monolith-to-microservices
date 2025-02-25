@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   build-api-feed:
+    working_directory: ~/project/udagram-api-feed
     docker:
       - image: cimg/base:stable
         auth:
