@@ -4,17 +4,18 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  test-frontend:
+  test-api-feed:
     # Install node dependencies and run tests
     executor: node/default
-    working_directory: ~/project/udagram-frontend
+    working_directory: ~/project/udagram-api-feed
     steps:
       - checkout:
           path: ~/project
       - node/install-packages:
           pkg-manager: npm
   
+  
 workflows:
   build-and-test:
     jobs:
-      - test-frontend
+      - test-api-feed
