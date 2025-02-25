@@ -1,16 +1,16 @@
 version: 2.1
 jobs:
-  build-api-feed:
+  mybuildjob:
     docker:
-      - image: circleci/node:14
+      - image: docker/compose:1.29.1
     steps:
       - checkout
       - run:
+          name: build and push
           command: |
-            cd udagram-api-feed
-            npm install
-            npm run build
+            docker-compose -f docker-compose-build.yaml build --parallel
+
 workflows:
-  build-and-test:
+  build_and_push:
     jobs:
-      - build-api-feed
+      - mybuildjob
