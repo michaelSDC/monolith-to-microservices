@@ -16,15 +16,13 @@ jobs:
   
       - uses: actions/checkout@v4
       
-      - name: Build the Docker image
-        run: |
-            cd udagram-api-feed
-            docker build .
-
-      - name: Log in to Docker Hub
-        run: |
-            docker login -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
-
+      - uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: docker-hub-repo/udagram-api-feed
+          registry: docker.io
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+            
 
   
 
