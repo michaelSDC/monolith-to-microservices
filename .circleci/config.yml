@@ -1,16 +1,36 @@
 version: 2.1
+
 jobs:
-  mybuildjob:
+  build:
+    working_directory: ~/monolith-to-microservices
+
     docker:
-      - image: docker/compose:1.29.1
+      - image: circleci/node:14
+
     steps:
+
       - checkout
+
       - run:
-          name: build and push
+          name: Check versions
           command: |
+            docker --version
+            docker-compose --version
+
+      - run:
+          name: Build images
+          command: |
+            docker image prune --all
             docker-compose -f docker-compose-build.yaml build --parallel
+            docker tag udagram-frontend udacityclouddeveloper/udagram-frontend
+            docker tag udagram-api-feed udacityclouddeveloper/udagram-api-feed
+            docker tag udagram-api-user udacityclouddeveloper/udagram-api-user
+            docker tag udagram-reverseproxy udacityclouddeveloper/udagram-reverseproxy
 
 workflows:
-  build_and_push:
+  build-and-test:
     jobs:
-      - mybuildjob
+      - build
+
+
+
