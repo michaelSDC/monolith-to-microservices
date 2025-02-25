@@ -1,47 +1,18 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:udagram-frontend
 version: 2.1
-orbs:
-  node: circleci/node@5
 jobs:
-  test-api-feed:
-    # Install node dependencies and run tests
-    executor: node/default
-    working_directory: ~/project/udagram-api-feed
-    steps:
-      - checkout:
-          path: ~/project
-      - node/install-packages:
-          pkg-manager: npm
   build-api-feed:
-    # Build node project
-    executor: node/default
+    docker:
+      - image: cimg/base:2022.09
     working_directory: ~/project/udagram-api-feed
     steps:
-      - checkout:
-          path: ~/project
-      - node/install-packages:
-          pkg-manager: npm
+      - checkout
       - run:
-          command: npm install .
-      - run:
-          command: npm run dev
-      - run:
-          name: Create the ~/artifacts directory if it doesn't exist
-          command: mkdir -p ~/artifacts
-
-          
-      # Copy output to artifacts dir
-      - run:
-          name: Copy artifacts
-          command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
-      - store_artifacts:
-          path: ~/artifacts
-          destination: node-build
-  
+          name: Build Docker image
+          command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -t udacityclouddeveloper/udagram-api-feed
   
 workflows:
   build-and-test:
     jobs:
-      - test-api-feed
       - build-api-feed
