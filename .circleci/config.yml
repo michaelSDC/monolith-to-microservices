@@ -1,7 +1,6 @@
 version: 2.1
 jobs:
   build-api-feed:
-    working_directory: ~/monolith-to-microservices/udagram-api-feed
     docker:
       - image: cimg/base:stable
         auth:
@@ -11,7 +10,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-            docker build -t udacityclouddeveloper/udagram-api-feed:latest .
+          cd udagram-api-feed
+      - run:
+          docker build -t udacityclouddeveloper/udagram-api-feed:latest .
   
 workflows:
   build-and-test:
