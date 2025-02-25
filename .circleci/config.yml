@@ -3,15 +3,12 @@ jobs:
   build-api-feed:
     working_directory: ~/project/udagram-api-feed
     docker:
-      - image: cimg/base:2022.09
+      - image: cimg/base:stable
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - setup_remote_docker
       - run:
-          name: Build Docker image
-          command:
-            docker build -t udacityclouddeveloper/udagram-api-feed
+            docker build -t udacityclouddeveloper/udagram-api-feed .
   
 workflows:
   build-and-test:
