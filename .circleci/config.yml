@@ -7,9 +7,9 @@ jobs:
       - checkout
       - run:
         command: |
-        cd udagram-api-feed
-        npm install
-        npm run build
+          cd udagram-api-feed
+          npm install
+          npm run build
 workflows:
   build-and-test:
     jobs:
