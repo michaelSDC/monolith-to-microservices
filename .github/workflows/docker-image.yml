@@ -14,8 +14,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build and push the Docker image
+    - name: Build the Docker image
       run: |
           cd udagram-api-feed
           docker build .
+          docker tag udagram-api-feed udacityclouddeveloper/udagram-api-feed
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+
+    - name: Push the Docker image
+      run: |
+        docker push ${{ secrets.USERNAME }}/udagram-api-feed
+
+
+
+
+          
 
