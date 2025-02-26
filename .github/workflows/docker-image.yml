@@ -21,6 +21,11 @@ jobs:
             cd udagram-api-feed
             docker build .
 
+      - name: push to docker
+        run: |
+            docker push udacityclouddeveloper/udagram-api-feed:latest
+      
+
  
   
 
