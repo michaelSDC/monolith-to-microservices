@@ -23,7 +23,7 @@ jobs:
 
       - name: push to docker
         run: |
-            docker push udacityclouddeveloper/udagram-api-feed:latest
+            docker push udacityclouddeveloper/udagram-api-feed
       
 
  
