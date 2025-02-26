@@ -1,0 +1,68 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        
+      - name: build image udagram-api-feed
+        run: |
+            cd udagram-api-feed
+            docker build . -t udacityclouddeveloper/udagram-api-feed:latest
+
+      - name: build image udagram-api-user
+        run: |
+            cd udagram-api-user
+            docker build . -t udacityclouddeveloper/udagram-api-user:latest
+
+      - name: build image udagram-frontend
+        run: |
+            cd udagram-api-user
+            docker build . -t udacityclouddeveloper/udagram-frontend:latest
+
+      - name: build image reverseproxy
+        run: |
+            cd udagram-api-user
+            docker build . -t udacityclouddeveloper/reverseproxy:latest
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.TOKEN }}
+
+      - name: push to docker
+        run: |
+            docker push ${{ secrets.USER }}/udagram-api-feed:latest
+            docker push ${{ secrets.USER }}/udagram-api-user:latest
+            docker push ${{ secrets.USER }}/udagram-frontend:latest
+            docker push ${{ secrets.USER }}/reverseproxy:latest
+
+
+
+
+
+      
+
+ 
+  
+
+
+
+
+
+
+
+          
