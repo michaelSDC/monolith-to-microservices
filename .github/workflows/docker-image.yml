@@ -23,6 +23,7 @@ jobs:
 
       - name: push to docker
         run: |
+            docker login -u ${{ USER }} -p ${{ TOKEN }}
             docker push udacityclouddeveloper/udagram-api-feed:latest
       
 
