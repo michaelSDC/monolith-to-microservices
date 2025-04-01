@@ -5,7 +5,7 @@ metadata:
 data:
   POSTGRES_HOST: udagram-udacity.cpnusxyptycw.eu-central-1.rds.amazonaws.com
   POSTGRES_DB: postgres
-  AWS_BUCKET: udacity-michaek-schneider-bucket
+  AWS_BUCKET: udacity-michael-schneider-bucket
   AWS_REGION: eu-central-1
   URL: http://localhost:8100
 
