@@ -32,7 +32,12 @@ spec:
               configMapKeyRef:
                 name: example-configmap
                 key: POSTGRES_HOST
-        image: mssdc/udagram-api-feed:v2
+          - name: URL
+            valueFrom:
+              configMapKeyRef:
+                name: example-configmap
+                key: URL
+        image: mssdc/udagram-api-feed:v1
         ports:
         - containerPort: 8080
       imagePullSecrets:
