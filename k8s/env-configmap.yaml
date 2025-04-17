@@ -7,5 +7,5 @@ data:
   POSTGRES_DB: postgres
   AWS_BUCKET: udacity-michael-schneider-bucket
   AWS_REGION: eu-central-1
-  URL: http://localhost:8100
+  URL:  http://a247b32fa38c94ac1b5b3b21e1354c72-1656205307.eu-central-1.elb.amazonaws.com
 

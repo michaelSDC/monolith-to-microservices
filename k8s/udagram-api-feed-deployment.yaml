@@ -3,19 +3,26 @@ kind: Deployment
 metadata:
   name: backend-feed
   labels:
-    app: backend-feed
+    service: backend-feed
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend-feed
+      service: backend-feed
   template:
     metadata:
       labels:
-        app: backend-feed
+        service: backend-feed
     spec:
       containers:
       - name: backend-feed
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"  
         env:
           - name: POSTGRES_USERNAME
             valueFrom:
@@ -38,7 +45,5 @@ spec:
                 name: example-configmap
                 key: URL
         image: mssdc/udagram-api-feed:v1
-        ports:
-        - containerPort: 8080
       imagePullSecrets:
       - name: my-secret

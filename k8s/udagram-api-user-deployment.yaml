@@ -3,19 +3,26 @@ kind: Deployment
 metadata:
   name: backend-user
   labels:
-    app: backend-user
+    service: backend-user
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend-user
+      service: backend-user
   template:
     metadata:
       labels:
-        app: backend-user
+        service: backend-user
     spec:
       containers:
       - name: backend-user
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"    
         env:
           - name: POSTGRES_USERNAME
             valueFrom:
@@ -38,5 +45,5 @@ spec:
                 name: example-configmap
                 key: URL
         image: mssdc/udagram-api-user:v1
-        ports:
-        - containerPort: 8080
+      imagePullSecrets:
+      - name: my-secret
