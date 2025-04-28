@@ -44,6 +44,11 @@ spec:
               configMapKeyRef:
                 name: example-configmap
                 key: URL
+          - name: JWT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: example-configmap
+                key: JWT_SECRET
         image: mssdc/udagram-api-user:v1
       imagePullSecrets:
       - name: my-secret
